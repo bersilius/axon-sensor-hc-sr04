@@ -9,11 +9,12 @@
 #define TRIGPIN 4
 #define ECHOPIN 2
 
+/* Setup HC-SR04 ultrasonic distance sensor */
 UltraSonicDistanceSensor distanceSensor(TRIGPIN, ECHOPIN);
 
 /* WiFi config */
-const char* WIFI_SSID = "your-wifi-ssid";
-const char* WIFI_PSK = "your-wifi-password";
+const char* WIFI_SSID = "__WIFI_SSID__";
+const char* WIFI_PSK = "__WIFI_PASSWORD__";
 
 /* NATS config */
 const String AXON_ID = "8795ff231a"; // Unique ID for axon subjects on demo.nats.io that prevents collision
@@ -117,9 +118,6 @@ void setup() {
   nats.on_connect = nats_on_connect;
   nats.on_error = nats_on_error;
   nats.connect();
-
-  /* Setup HC-SR04 ultrasonic distance sensor */
-  sensorSetup();
 }
 
 void loop() {
